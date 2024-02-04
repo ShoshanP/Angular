@@ -1,0 +1,62 @@
+<div class="card">
+
+    <div class="card-body" *ngIf="myStudent&&myStudent.isActive">
+        <form [formGroup]="studentForm">
+            <div class="mb-3">
+                <label for="studenFname" class="form-label"> firstName: </label>
+                <input formControlName="firstName" type="text" class="form-control" id="studenFname"
+                    (focus)="inputFocus()">
+                    <div class="alert alert-danger" *ngIf="!studentForm.controls['firstName'].valid">this field is required</div>
+            </div>
+            <div class="mb-3">
+                <label for="studentLname" class="form-label" for="studentLname">lastName:</label>
+                <input formControlName="lastName" type="text" class="form-control" id="studentLname"
+                    (focus)="inputFocus()">
+                    {{studentForm.value | json}}
+            </div>
+            <div class="mb-3">
+
+                <label for="studentPhone" class="form-label" for="studentPhone">telephone:</label>
+                <input formControlName="phone" type="text" class="form-control" id="studentPhone"
+                    (focus)="inputFocus()">
+            </div>
+
+            <div class="mb-3">
+                <label for="studentAvgMarks" class="form-label" for="studentAvgMarks">average marks</label>
+                <input formControlName="averageMarks" type="text" class="form-control" id="studentAvgMarks"
+                    (focus)="inputFocus()">
+
+            </div>
+
+            <div class="mb-3">
+                <label for="yearStudy" class="form-label" >year of study</label>
+                <input type="radio" value=""/>שנה א
+                <input type="radio" value=""/>שנה ב
+                <input type="radio" value=""/>שנה ג
+               
+
+            </div>
+ 
+            <div class="mb-3">
+                <label for="courses" class="form-label" >choose your course</label>
+                <select  formControlName="courses">
+                    <option [ngValue]="null" disabled>Select course</option>
+                    <option *ngFor="let course of coursesArr" [ngValue]="course.id">{{course.name}}
+                    </option>
+                </select>
+            </div>
+            <div>
+                <input type="number" name="numOfLessDays" placeholder="מספר ימי היעדרות">
+                <input type="date" name="dateLess" id="">
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="saveNewStudent(numOfLessDays,dateLess)" [disabled]="!studentForm.valid">save changes</button>
+        </form>
+    </div>
+
+</div>
+<ng-template #notActive>
+    dont active!
+    <br>
+    date leave: {{myStudent.dateLeave}}
+</ng-template>

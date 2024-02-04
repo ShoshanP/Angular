@@ -1,0 +1,17 @@
+<ul class="list-group">
+    <li *ngFor="let student of students" class="list-group-item" 
+    [ngClass]="
+    {
+        'list-group-item-secondary': !student.isActive,
+        'list-group-item-success': student.averageMarks>90
+    }">
+        {{student.firstName}} {{student.lastName}}: id={{student.id}}, address={{student.address.street}}
+        {{student.address.num}}, {{student.address.city}}
+       <button (click)="deleteStudent(student)">delete</button>
+       <button (click)="editStudent(student)">edit me</button>
+    </li>
+</ul>
+<button (click)="addNewStudent()">Add new student</button>
+
+<app-student-details [myStudent]="selectedStudent" (onSaveStudent)="saveStudentToList($event)"></app-student-details>
+
