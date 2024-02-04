@@ -12,7 +12,7 @@
                 <label for="studentLname" class="form-label" for="studentLname">lastName:</label>
                 <input formControlName="lastName" type="text" class="form-control" id="studentLname"
                     (focus)="inputFocus()">
-                    {{studentForm.value | json}}
+                    {{myStudent | json}}
             </div>
             <div class="mb-3">
 
@@ -46,11 +46,12 @@
                 </select>
             </div>
             <div>
-                <input type="number" name="numOfLessDays" placeholder="מספר ימי היעדרות">
-                <input type="date" name="dateLess" id="">
+            {{"מספר חיסורים נוכחי: "+countLessDays}}
+                <input #numOfLessDays type="number" name="numOfLessDays" placeholder="מספר ימי היעדרות">
+                <input #dateLess type="date" name="dateLess" id="">
             </div>
 
-            <button type="submit" class="btn btn-primary" (click)="saveNewStudent(numOfLessDays,dateLess)" [disabled]="!studentForm.valid">save changes</button>
+            <button type="submit" class="btn btn-primary" (click)="saveNewStudent()" [disabled]="!studentForm.valid">save changes</button>
         </form>
     </div>
 

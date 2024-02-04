@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Student } from "./models/student.model";
+import { count } from "rxjs";
 @Injectable()
 export class StudentService {
   getStudents(): Student[] {
@@ -23,7 +24,24 @@ export class StudentService {
   }
 
   getAvgMark(id: number): number{
+    
     return this.getStudents().find(s=>s.id==id).averageMarks;
+  }
+  getCountLessDays(id:number):number{
+    console.log("id",id)
+    let count:number
+    let lessDay=this.getStudents().find(s=>s.id==id)?.lassDays;
+    console.log("less days",lessDay);
+    if(lessDay)
+    {
+      lessDay.map(ld=>count+=ld.numOfDays);
+      console.log("count",count);
+      return count;
+    }
+    console.log("count",count);
+
+    return 0;
+    
   }
 }
 

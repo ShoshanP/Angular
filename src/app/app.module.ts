@@ -7,12 +7,13 @@ import { StudentDetailsComponent, } from "./student-details/student-details.comp
 import { FormComponent } from './form/form.component';
 import { ReactiveFormsModule } from "@angular/forms";
 import { StudentService } from "./student.service";
+import { ObservableComponent } from './observable/observable.component';
 
 
 
 @NgModule({
     imports: [BrowserModule,ReactiveFormsModule],
-    declarations: [AppComponent, StudentListComponent,StudentDetailsComponent, FormComponent],
+    declarations: [AppComponent, StudentListComponent,StudentDetailsComponent, FormComponent, ObservableComponent],
     providers:[StudentService],
     bootstrap: [AppComponent]
 })
