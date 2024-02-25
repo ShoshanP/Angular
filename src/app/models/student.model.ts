@@ -6,7 +6,6 @@ export class Student {
         this.isActive = true;
         this.id = 0;
         this.address=new Address();
-        this.lassDays=[]
     }
     id: number;
     firstName: string;
